@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #343a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.drum-machine {
+  width: 50vw;
+  height: 40vh;
+  background: #828282;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  box-shadow: black 3px 3px 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pad-bank {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.drum-pad {
+  background: #343a40;
+  border-radius: 10px;
+  width: 25%;
+  height: 25%;
+  margin: 10px;
+  border: none;
+  font-size: 1.5em;
+  color: #fff;
+}
+.drum-pad.active {
+  transition: all 0.1s;
+  box-shadow: black 1px 1px 2px;
+  translate: -1px -1px;
+  transform: translateY(2px);
+}
+.drum-pad:focus {
+  outline: none;
+  border: none;
+}
+.drum-pad:disabled {
+  box-shadow: none;
+  transition: all 1s;
+  opacity: 0.8;
+}
+.drum-pad:enabled {
+  box-shadow: black 3px 3px 5px;
+  transition: box-shadow 1s;
+}
+
+.controls {
+  height: 100%;
+  width: 40%;
+}
+
+.display-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display-container .display {
+  width: 60%;
+  height: 60%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display-container .display.off {
+  background-color: #494949;
+  transition: all 0.8s;
+  box-shadow: inset 0px 1px 4px #000;
+}
+.display-container .display.on {
+  background-color: #dedede;
+  transition: all 1s;
+  box-shadow: inset 0px 1px 14px #000;
+}
+
+.control-btns {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+.control-btns .control-btns-tmblrs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.control-btns .control-btns-tmblrs .switcher {
+  margin: auto 10px;
+  width: 20%;
+  height: 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: black 2px 2px 4px;
+}
+.control-btns .control-btns-tmblrs .switch {
+  background: #dedede;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  box-shadow: black 1px 1px 2px;
+}
+.control-btns .control-btns-tmblrs .power-off {
+  transition: all 1s;
+  background: #d46464;
+}
+.control-btns .control-btns-tmblrs .power-off .switch {
+  position: relative;
+  left: 0%;
+  transition: all 0.8s;
+}
+.control-btns .control-btns-tmblrs .power-on {
+  transition: all 0.8s;
+  background: #96d464;
+}
+.control-btns .control-btns-tmblrs .power-on .switch {
+  background: #343a40;
+  position: relative;
+  left: 75%;
+  transition: all 0.8s;
+}
+.control-btns .control-btns-tmblrs .board-bank1 {
+  transition: all 0.8s;
+  background: #3d5c56;
+}
+.control-btns .control-btns-tmblrs .board-bank1 .switch {
+  position: relative;
+  left: 0%;
+  transition: all 0.8s;
+}
+.control-btns .control-btns-tmblrs .board-bank2 {
+  transition: all 0.8s;
+  background: #363041;
+}
+.control-btns .control-btns-tmblrs .board-bank2 .switch {
+  position: relative;
+  left: 75%;
+  transition: all 0.8s;
+}
+.control-btns .volume-slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 9%;
+  width: 100%;
+}
+.control-btns .volume-slider input {
+  display: block;
+  margin: auto;
+  margin-top: 4%;
+  width: 60%;
+  height: 15px;
+  border-radius: 20px;
+  box-shadow: #8d8d8d 1px 1px 3px;
+}
+.control-btns .volume-slider input:focus {
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+footer {
+  margin-top: 35px;
+  text-align: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1em;
 }
+footer a:visited {
+  text-decoration: none;
+}/*# sourceMappingURL=App.css.map */
