@@ -62,7 +62,7 @@ body {
   }
   &:enabled {
     box-shadow: black 3px 3px 5px;
-    transition: box-shadow 1s;
+    transition: box-shadow 1s, opacity .8s;
   }
   
   }
@@ -93,7 +93,7 @@ body {
     }
     &.on {
       background-color: #dedede;
-      transition: all 1s;
+      transition: all .8s;
       box-shadow: inset 0px 1px 14px #000 ;
     }
   }
